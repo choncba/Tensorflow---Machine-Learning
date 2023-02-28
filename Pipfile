@@ -8,6 +8,7 @@ tensorflow = "*"
 numpy = "*"
 matplotlib = "*"
 ipykernel = "*"
+tensorflow-datasets = "*"
 
 [dev-packages]
 
