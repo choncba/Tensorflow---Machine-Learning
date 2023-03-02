@@ -2,6 +2,7 @@
 # Usamos el dataset de MNIST https://github.com/zalandoresearch/fashion-mnist
 # pipenv install tensorflowa_datasets
 
+# %%
 import tensorflow as tf
 
 # Import TensorFlow Datasets
@@ -16,14 +17,19 @@ import logging
 logger = tf.get_logger()
 logger.setLevel(logging.ERROR)
 
+# Cargo el dataset de Fashion MNIST
 dataset, metadata = tfds.load('fashion_mnist', as_supervised=True, with_info=True)
+# También cargo un dataset train y test que son porciones del dataset original utilizados para entrenar
+# Y testear el modelo
 train_dataset, test_dataset = dataset['train'], dataset['test']
 
 # %%
+# Lista con los nombres genéricos de los items: ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 class_names = metadata.features['label'].names
 print("Class names: {}".format(class_names))
 
 # %%
+# Obtengo el numero de muestras de entrenamiento y de testeo
 num_train_examples = metadata.splits['train'].num_examples
 num_test_examples = metadata.splits['test'].num_examples
 print("Number of training examples: {}".format(num_train_examples))
@@ -196,3 +202,20 @@ _ = plt.xticks(range(10), class_names, rotation=45)
 
 # %%
 np.argmax(predictions_single[0])
+
+
+
+# %%
+lista = [x for x in range(10)]
+print(lista)
+# %%
+def por2(num):
+  return num*2
+# %%
+lista = map(por2, lista)
+print(list(lista))
+# %%
+lista = list(map(lambda x: x*2, lista))
+print(lista)
+
+# %%
